@@ -1,0 +1,29 @@
+// Database aanmaken
+CREATE DATABASE bedrijf_abc;
+
+
+// Table werknemer aanmaken
+CREATE TABLE werknemers (
+	id INT PRIMARY KEY,
+	voornaam VARCHAR(255),
+	tussenvoegsel VARCHAR(255),
+	achternaam VARCHAR(255),
+	geboortedatum DATE,
+	salaris_schaal INT
+)
+
+// Gegevens toevoegen aan de table
+INSERT INTO `werknemers`(`id`, `voornaam`, `tussenvoegsel`, `achternaam`, `geboortedatum`, `salaris_schaal`) 
+VALUES 	(1, "Nico", "de", "Boer", "1975-12-23", 18), 
+	(2, "Tim", NULL, "Jansen", "1986-02-16", 10), 
+	(3, "Pim", NULL, "Vosse", "1990-06-07", 10);
+
+// De naam van Tim verranderen naar John
+UPDATE `werknemers` SET `voornaam`= "John" WHERE voornaam = "Tim" AND id = 2;
+
+// Gegevens van Pim Vosse deleten uit de table
+DELETE FROM `werknemers` WHERE id= 3 AND voornaam = "Pim" AND achternaam = "Vosse";
+
+
+
+

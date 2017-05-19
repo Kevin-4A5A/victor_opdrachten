@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+
+	#Counter{
+		position : absolute;
+		border-radius : 50px;
+		width : 80px;
+		height : 80px;
+		border : 1px solid blue;
+		color : white;
+		font-size : 20px;
+		text-align: center;
+		background-image : url("http://www.famousbirthdays.com/headshots/will-poulter-9.jpg");
+		background-size: 80px 80px;
+	}
+	html{
+	cursor: url('poultertje.ico'), default;
+	}
+
+</style>
+</head>
+
+<body onload="ItsTheFinalCountDown()">
+
+	<div id="Counter">0</div>
+
+</body>
+
+<script>
+
+function moveCircle()
+{
+	if(clickRotation == false)
+	{
+		var x = event.clientX - 60;
+		var y = event.clientY - 60;
+		var moveItem = document.getElementById("Counter");
+
+		moveItem.style.left = x + "px";
+		moveItem.style.top = y + "px";
+	}
+}
+
+document.addEventListener("mousemove", moveCircle);
+
+</script>
+
+<script>
+
+	var timeke = 0;
+	
+	var Counter = document.getElementById("Counter");
+	
+	Counter.innerHTML = timeke;
+	
+	function ItsTheFinalCountDown()
+	{
+		var countdown = setInterval(function(){timeke++; Counter.innerHTML = 100-timeke; if(timeke==100){document.body.style.backgroundImage = 'url("http://www.famousbirthdays.com/headshots/will-poulter-9.jpg")'; clearInterval(countdown);}}, 100);
+	}
+	
+</script>
+
+<script>
+
+var xRecord = [];
+var yRecord = [];
+
+var i = 0;
+var max = 0;
+
+var clickRotation = false;
+var lock = false;
+
+document.addEventListener("click", mimicMouseMove);
+
+
+function recordPosition()
+{
+	if(lock == false)
+	{
+		var x = event.clientX - 60;
+		var y = event.clientY - 60;
+
+		xRecord.push(x);
+		yRecord.push(y);
+		max++;
+	}	
+}
+
+function mimicMouseMove()
+{
+	if(clickRotation == false)
+	{
+		document.addEventListener("mousemove", recordPosition);
+		clickRotation = true;
+	}
+	else if(clickRotation == true)
+	{
+		lock = true;
+		var followPosition = setInterval(function()
+		{
+			document.getElementById('Counter').style.left = xRecord[i] + "px";
+			document.getElementById('Counter').style.top = yRecord[i] + "px";
+			
+			if(i == max)
+			{
+				xRecord = [];
+				yRecord = [];
+				clickRotation = false;
+				lock = false;
+				max = 0;
+				i =0;
+				clearInterval(followPosition);
+				document.removeEventListener("mousemove", recordPosition);
+			}
+			else
+			{
+				i++;
+			}
+		}, 1);
+		
+	}
+}
+</script>
+
+
+</html>

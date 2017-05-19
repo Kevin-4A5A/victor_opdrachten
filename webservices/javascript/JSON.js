@@ -3,7 +3,7 @@ document.getElementById("Stap_1_Button").addEventListener("click", stap1);
 document.getElementById("Stap_2_Button").addEventListener("click", stap2);
 document.getElementById("Stap_3_Button").addEventListener("click", stap3);
 
-
+//stap 1 haalt de respons op en toont het op het scherm
 function stap1()
 {
 	var Jsoneke = getResponse('api-employees.php?output=json');
@@ -13,7 +13,7 @@ function stap1()
 
 
 var Company;
-
+// stap 3 haalt de response op en laat alleen de company op het scherm zien
 function stap2()
 {
 	var output;
@@ -27,7 +27,7 @@ function stap2()
 	Company = output;
 }
 
-
+// stap 3 	haalt bijna alles op, loopt met een for loop door de response heen en kijkt of de name van elk result overeenkomt met de company van stap 2.
 function stap3()
 {
 	var output;

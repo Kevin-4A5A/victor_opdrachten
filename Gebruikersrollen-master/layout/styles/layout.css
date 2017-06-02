@@ -1,4 +1,3 @@
-#login{text: black;}
 @charset "utf-8";
 /*
 Template Name: Cooban
@@ -27,7 +26,7 @@ File: Layout CSS
 
 #header #logo{}
 #header #logo h1{margin:0; padding:0; font-size:22px;}
-
+#login{text: black;}
 
 /* Page Intro
 --------------------------------------------------------------------------------------------------------------- */

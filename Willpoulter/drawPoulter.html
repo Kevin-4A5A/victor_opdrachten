@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+
+#poulterCanvas
+{
+	width: 80%;
+	border: 2px solid black;
+}
+
+</style>
+</head>
+<body>
+
+	<canvas id="poulterCanvas"> </canvas>
+	<div id="kleurenpouleter">
+	
+	</div>
+	
+</body>
+
+<script>
+
+	var canvas = document.getElementById("poulterCanvas");
+	var context = canvas.getContext("2d");
+	context.fillStyle = "#FF0000";
+	document.getElementById("poulterCanvas").addEventListener("mousedown", draw);
+
+
+	function draw(e)
+	{
+		var pos = getMousePos(canvas, e);
+		posx = pos.x;
+		posy = pos.y;
+
+		context.fillStyle = "#000000";
+		context.fillRect (posx, posy, 4, 4);
+	}
+	
+	function getMousePos(canvas, evt) 
+	{
+		var rect = canvas.getBoundingClientRect();
+		return {
+		x: evt.clientX - rect.left,
+		y: evt.clientY - rect.top
+		};
+	}
+	
+</script>
+</html>

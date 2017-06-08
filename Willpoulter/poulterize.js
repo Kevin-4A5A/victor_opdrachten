@@ -68,8 +68,44 @@ var Poulters =
 	"http://ell.h-cdn.co/assets/16/03/768x510/gallery-1453410932-elle-will-poulter-the-revenant-04-20th-century-fox.jpg"
 ];
 
-function getPoulter()
-{
-	var random = (Math.floor(Math.random() * 66) + 1) - 1;
-	return Poulters[random];
+function getPoulter(srcOnly, fullImg, height, width)
+{	
+	var random = (Math.floor(Math.random() * Poulters.length) + 1) - 1;
+	
+	if((srcOnly === true) && (fullImg != true))
+	{
+		return Poulters[random];
+	}
+	else if((fullImg === true) && (srcOnly != true))
+	{
+		return '<img src="' + Poulters[random] + '" width="' + width + '" height="' + height + '">';
+	}
+	else
+	{
+		return 'Error: no valid parameters!';
+	}
 }	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

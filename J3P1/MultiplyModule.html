@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="">
+<script>
+
+function multiplyModule()
+{
+
+	function multiply()
+	{
+		var firstNumber = document.querySelector('input[name="firstNumber"]').value;
+        var secondNumber = document.querySelector('input[name="secondNumber"]').value;
+		
+		var result = firstNumber * secondNumber;
+		
+		document.querySelector('div[id="result"]').innerHTML = result;
+	}
+	
+	document.querySelector('button[id="multiply"]').addEventListener('click', multiply);
+} 
+</script>
+</head>
+<body>
+<form>
+  <div>
+    <label>Number 1:</label>
+    <input type="number" name="firstNumber">
+  </div>
+  <div>
+    <label>Number 2:</label>
+    <input type="number" name="secondNumber">
+  </div>
+  <div>
+    <button type="button" id="multiply">Multiply</button>
+  </div>
+  <div id="result"></div>
+</form>
+<script> multiplyModule(); </script>
+</body>
+</html>

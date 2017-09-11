@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="">
+<script src="http://www.psgh.nl/poulterscript.js"></script>
+<script>
+
+function factorial(Numba)
+{
+	Numba = Math.round(Numba);
+	
+	if(Numba<0)
+	{
+		return "Negatief!!!!!!!!!";
+	}
+	else if(Numba === 0)
+	{
+		return 1;
+	}
+	else
+	{
+		var result = Numba;
+		for (Numba-=1; Numba>1; Numba--)
+		{
+			result = result * Numba; 
+		}
+		
+		for(i=0; i<result; i++)
+		{
+			document.body.innerHTML += getPoulter(null, true, 50, 30);
+		}
+		return result;
+	}
+}
+
+
+
+</script>
+</head>
+<body onload="factorial(4);">
+
+</body>
+
+</html>

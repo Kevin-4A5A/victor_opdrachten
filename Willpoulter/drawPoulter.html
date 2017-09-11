@@ -1,52 +1,182 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title></title>
-<style>
+  <head>
+    <meta charset="utf-8">
+    <title>Draw Poulter</title>
+	<script src="http://www.psgh.nl/poulterscript.js"></script>
+    <style>
 
-#poulterCanvas
-{
-	width: 80%;
-	border: 2px solid black;
-}
-
-</style>
-</head>
-<body>
-
-	<canvas id="poulterCanvas"> </canvas>
-	<div id="kleurenpouleter">
+    #poulter {
+	width: 80vw;
+    height: 80vh;
+    }
 	
-	</div>
+	#poulterize{
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	}
 	
-</body>
+	#kleurtje{
+	width: 5.5em;
+	}
+	
+	#paint{
+	border: 0.5vw solid black;
+	}
+	
+	#pannel{
+	border: 0.5vw solid black;
+	width: 80vw;
+	}
+	
+	
+	#coloer{
+	float:left;
+	display:inline; 
+	width: 30%;
+	margin-left: 10%;
+	}
+	
+	#thickk{
+	float:right; 
+	display:inline; 
+	width: 30%;
+	padding: 0%;
+	margin-right: 10%;
+	}
+	
+	.dikketeksten{
+	font-size: 140%;
+	}
+	
+	#rangeInd{
+	border: 1px solid black;
+	width:4em;
+	text-align:center;
+	}
+	
+	#reset{
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	}
 
+    </style>
+  </head>
+  <body>
+    <div id="poulter">
+	<div id="pannel">
+		<div id="coloer" class="dikketeksten">
+			Kleurtje:<br>
+			<input type="color" id="kleurtje">
+		</div>
+		<div id="thickk" class="dikketeksten">
+			Dikte van je boter:<br>
+			<input type="range" id="ragne" min="1" max="100" value="1">
+			<input type="number" id="rangeInd" value="1" min="1" max="100">
+		</div><br><br><br>
+		<div><hr></div>
+		<button id="poulterize"><h3>Poulterize</h3></button><hr>
+		<button id="reset"><h3>Reset</h3></button>
+	</div>	
+    	<canvas id="paint"></canvas>
+    </div>
+<img id='poultertje' src='http://cdn.thedubs-staging.com/images/hamiltonhodell/large-size/_uploads/userassets/images/cv/poulterwillheadshotjuly2015_3455x3455_635719528879089846.jpg' hidden />
 <script>
 
-	var canvas = document.getElementById("poulterCanvas");
-	var context = canvas.getContext("2d");
-	context.fillStyle = "#FF0000";
-	document.getElementById("poulterCanvas").addEventListener("mousedown", draw);
-
-
-	function draw(e)
+	function RandomPoulter()
 	{
-		var pos = getMousePos(canvas, e);
-		posx = pos.x;
-		posy = pos.y;
-
-		context.fillStyle = "#000000";
-		context.fillRect (posx, posy, 4, 4);
+		var poulterimg = getPoulter(true);
+		document.getElementById("poultertje").src= poulterimg;
 	}
 	
-	function getMousePos(canvas, evt) 
+	function canvasReset()
 	{
-		var rect = canvas.getBoundingClientRect();
-		return {
-		x: evt.clientX - rect.left,
-		y: evt.clientY - rect.top
-		};
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}
 	
+	function poulterize(){
+        var img=document.getElementById("poultertje");
+		var x = parseInt(poulter_style.getPropertyValue('width')) * 0.5 - (img.width *0.5);
+		var y = parseInt(poulter_style.getPropertyValue('height')) * 0.5 -(img.height *0.5);
+		canvasReset();
+        ctx.drawImage(img,x,y);
+		RandomPoulter();
+	}
+
+	function range()
+	{
+		document.getElementById("rangeInd").value = document.getElementById("ragne").value
+	}
+	function rangeInd()
+	{
+		document.getElementById("ragne").value = document.getElementById("rangeInd").value
+	}
+
+	var canvas = document.querySelector('#paint');
+	var ctx = canvas.getContext('2d');
+	
+	document.getElementById("kleurtje").addEventListener("change", colorPick);
+	document.getElementById("rangeInd").addEventListener("change", rangeInd);
+	document.getElementById("rangeInd").addEventListener("change", lineSize);
+	document.getElementById("ragne").addEventListener("change", range);
+	document.getElementById("ragne").addEventListener("change", lineSize);
+	document.getElementById("poulterize").addEventListener("click", poulterize);
+	document.getElementById("reset").addEventListener("click", canvasReset);
+	
+	var colour = 'black';
+	var aleHetWerkeuim = document.querySelector('#poulter');
+	var poulter_style = getComputedStyle(poulter);
+	canvas.width = parseInt(poulter_style.getPropertyValue('width'));
+	canvas.height = parseInt(poulter_style.getPropertyValue('height'));
+
+	var mouse = {x: 0, y: 0};
+	var last_mouse = {x: 0, y: 0};
+
+  function colorPick(){
+    colour = document.getElementById("kleurtje").value;
+    ctx.strokeStyle = colour;
+  }
+  function lineSize(){
+	   ctx.lineWidth = document.getElementById("ragne").value;
+  }
+
+	/* Mouse Capturing Work */
+	canvas.addEventListener('mousemove', function(e) {
+		last_mouse.x = mouse.x;
+		last_mouse.y = mouse.y;
+
+		mouse.x = e.pageX - this.offsetLeft;
+		mouse.y = e.pageY - this.offsetTop;
+	}, false);
+
+
+	/* Drawing on Paint App */
+	ctx.lineWidth;
+	ctx.lineJoin = 'round';
+	ctx.lineCap = 'round';
+
+
+	canvas.addEventListener('mousedown', function(e) {
+		canvas.addEventListener('mousemove', onPaint, false);
+	}, false);
+
+	canvas.addEventListener('mouseup', function() {
+		canvas.removeEventListener('mousemove', onPaint, false);
+	}, false);
+
+	var onPaint = function() {
+		ctx.beginPath();
+		ctx.moveTo(last_mouse.x, last_mouse.y);
+		ctx.lineTo(mouse.x, mouse.y);
+		ctx.closePath();
+		ctx.stroke();
+	};
+
+;
+
+
 </script>
+  </body>
 </html>

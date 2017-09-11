@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Draw Poulter</title>
+	<script src="http://www.psgh.nl/poulterscript.js"></script>
+  </head>
+  <body>
+	<div id="poulter1" ></div>
+	<div id="poulter2" ></div>
+	<img src="" onerror="this.src=getPoulter(true);"/>
+  </body>
+  <script>
+	
+	document.getElementById("poulter1").innerHTML = getPoulter(null, true);
+	document.getElementById("poulter2").innerHTML = getPoulter(null, true, 100, 200);
+	
+  </script>
+</html>

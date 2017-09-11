@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="">
+<script src="http://www.psgh.nl/poulterscript.js"></script>
+<script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+<script>
+
+	window.addEventListener("keydown", addKey, event);
+	
+	var arreeke = [];
+	function addKey(event)
+	{
+		arreeke.push(String.fromCharCode(event.keyCode));
+		
+		if(arreeke.length == 11)
+		{
+			arreeke.shift();
+		}
+		
+		var pulter = arreeke.join();
+		var pulter = pulter.replace(/,/g, "");
+		console.log(pulter);
+		
+		if(pulter == "POULTERIZE")
+		{
+			//cornify_add();
+			for(var i=0; i<3; i++)
+			{
+				document.body.innerHTML += getPoulter(null, true, 615, 440);
+			}
+		}
+	}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

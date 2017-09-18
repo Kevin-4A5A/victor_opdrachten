@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script>
+
+var numbers = [2, 6, 11, 5, 9, 8, 3, 46, 4];
+
+var prevNumbre = numbers[0];
+
+function Teller(numbre, index)
+{
+	if (index > 0)
+	{
+		var total = prevNumbre + numbre;
+		prevNumbre = numbre;
+		var output = "Poulter " + (index-1) + " = " + total;
+		console.log(output);
+	
+		if(index == numbers.length-1)
+		{
+			total = numbre;
+			output = "Poulter " + index + " = " + total;
+			console.log(output);
+		}
+	}
+}	
+
+//numbers.forEach(Teller);
+
+
+function newTeller(number, index , harry)
+{
+	if (index > 0)
+	{
+		var total = harry[index-1] + number;
+		var output = "Poulter " + (index-1) + " = " + total;
+		console.log(output);
+	
+		if(index == numbers.length-1)
+		{
+			total = number;
+			output = "Poulter " + index + " = " + total;
+			console.log(output);
+		}
+	}
+}
+
+numbers.forEach(newTeller);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

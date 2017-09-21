@@ -1,16 +1,17 @@
 <?php
-	session_start();
+	
 	$GLOBALS['BMI'] = 0;
 	
 	function berekenBMI()
 	{
 		if((isset($_POST['submit'])) && (isset($_POST['lang'])) && (isset($_POST['dikte']))  )
 		{
-			$GLOBALS['BMI'] = $_POST['dikte'] / ($_POST['lang'] * $_POST['lang']);
-
+			$GLOBALS['BMI'] = $_POST['dikte'] / ($_POST['lang'] * $_POST['lang']);			
 			return $GLOBALS['BMI'];	
 		}
 	}
+	
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +34,7 @@
 <br>
 <div id="BMI">
 <?php
- echo berekenBMI();
+	echo berekenBMI();
 ?>
 </div>
 </body>

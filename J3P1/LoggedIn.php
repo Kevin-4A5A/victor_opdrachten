@@ -33,19 +33,20 @@ if(!ISSET($_SESSION['LoggedIn']))
 </head>
 <body>
 
-<?php if($_SESSION['LoggedIn'] === true){ 
+<?php 
+	if($_SESSION['LoggedIn'] === true): 
 	echo 'Welcome Mr. Poulter.';
 ?>
 <form action='' method='POST'>
 	<input type='submit' name='LogOut' value='Log Out'>
 </form>
-<?php }else{ ?>
+<?php else: ?>
 <form action='' method='POST'>
 	USSRname: <input name='username' type='text'><br>
 	Password: <input name='password' type='password'><br>
 	<input type='submit' name='LogIn' value='Log In'><br>
 </form>
-<?php } ?>
+<?php endif ?>
 
 
 </body>

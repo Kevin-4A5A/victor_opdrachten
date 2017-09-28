@@ -1,8 +1,10 @@
-document.querySelector("[data-time='20']").addEventListener("click", function(){init(20000);});
-document.querySelector("[data-time='300']").addEventListener("click", function(){init(300000);});
-document.querySelector("[data-time='900']").addEventListener("click", function(){init(900000);});
-document.querySelector("[data-time='1200']").addEventListener("click", function(){init(1200000);});
-document.querySelector("[data-time='3600']").addEventListener("click", function(){init(3600000);});
+var buttons = document.querySelectorAll(".timer__button");
+buttons.forEach(function(element)
+{
+	element.addEventListener("click", function(){init(this.dataset.time);});
+});
+
+
 
 document.querySelector("#custom input").addEventListener("change", function(){init(document.querySelector("#custom input").value * 100);});
 
@@ -13,6 +15,7 @@ var x;
 
 function init(Count)
 {
+	Count = Count * 1000;
 	clearInterval(x);
 	Time = Count;
 	x = setInterval(CountDown, 1000)

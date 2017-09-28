@@ -26,7 +26,7 @@ function init(Count)
 
 function CountDown(Count)
 {
-	var minutes = Math.floor((Time % (1000 * 60 * 60)) / (1000 * 60));
+	var minutes = Math.floor(Time / (1000 * 60));
 	var seconds = Math.floor((Time % (1000 * 60)) / 1000);
 	
 	if(minutes == 0){minutes = '00'}

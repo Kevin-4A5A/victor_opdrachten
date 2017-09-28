@@ -6,7 +6,7 @@ buttons.forEach(function(element)
 
 
 
-document.querySelector("#custom input").addEventListener("change", function(){init(document.querySelector("#custom input").value * 100);});
+document.querySelector("#custom input").addEventListener("change", function(){init(document.querySelector("#custom input").value * 60);});
 
 var Time;
 var now;
@@ -30,6 +30,7 @@ function CountDown(Count)
 	var seconds = Math.floor((Time % (1000 * 60)) / 1000);
 	
 	if(minutes == 0){minutes = '00'}
+	if(minutes.toString().length == 1){minutes = '0' + minutes}
 	if(seconds == 0 ){seconds = '00'}
 	
 	document.querySelector("div .display__time-left").innerHTML = minutes + ':' + seconds;

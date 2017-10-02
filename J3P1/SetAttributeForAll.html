@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+
+<a href="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4NTc5Njk4Nl5BMl5BanBnXkFtZTgwMjQxNjgyMjE@._V1_UY317_CR12,0,214,317_AL_.jpg"> will poulter</a>
+<br><br>
+<img class="small" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4NTc5Njk4Nl5BMl5BanBnXkFtZTgwMjQxNjgyMjE@._V1_UY317_CR12,0,214,317_AL_.jpg">
+<br><br>
+<img class="medium" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4NTc5Njk4Nl5BMl5BanBnXkFtZTgwMjQxNjgyMjE@._V1_UY317_CR12,0,214,317_AL_.jpg">
+
+</body>
+</html>
+
+<script>
+
+function select(tag)
+{
+	var list = document.querySelectorAll(tag);
+	
+	return function (attribute, valuetje)
+	{
+		list.forEach(function(value, index, array)
+		{
+			list[index].setAttribute(attribute, valuetje);
+		});
+	};
+}
+
+var setLinksAttr = select('a');
+setLinksAttr('target', '_blank');
+
+var setImgAttr = select('.small');
+setImgAttr('width', '200');
+
+</script>

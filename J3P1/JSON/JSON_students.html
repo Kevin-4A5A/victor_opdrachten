@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script>
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("load", ajaxLoad);
+xhr.addEventListener("error", ajaxError);
+
+xhr.open("GET", "students.json");
+xhr.send();
+
+
+function ajaxLoad(event) {
+    if (this.status === 200) {
+        document.getElementById('table').innerHTML = createTable(this.responseText);
+    } else {
+        console.log("unsuccessful request");
+    }
+}
+
+function ajaxError(event) {
+    console.log('error');
+}
+
+function createTable(list	)
+{
+	var result = JSON.parse(list);
+	var table = '<table border="1px solid black"><tr><th>name</th><th>age</th></tr>'
+	for(var i = 0; i < Object.keys(result.students).length; i++)
+	{
+		table += '<tr>';
+		table += '<td>' + result.students[i].name + '</td>';
+		table += '<td>' + result.students[i].age + '</td>';
+		table += '</tr>';
+	}
+	table += '</table>';
+	return table;
+}
+
+
+</script>
+</head>
+<body>
+	<div id="table">
+	</div>
+</body>
+</html>

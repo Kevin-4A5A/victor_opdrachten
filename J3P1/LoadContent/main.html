@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+
+.flikker{
+	border: 1px solid black;
+	width: 33%;
+	margin:1px;
+	float:left;
+	text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+<div class="flikker">
+<button id="boeton1">1</button>
+</div>
+
+<div class="flikker">
+<button id="boeton2">2</button>
+</div>
+
+<div class="flikker">
+<button id="boeton3">3</button>
+</div>
+
+</body>
+<script>
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("load", ajaxLoad);
+xhr.addEventListener("error", ajaxError);
+
+xhr.open("GET", "Will-Poulter.html");
+xhr.send();
+
+
+function ajaxLoad(event) {
+    if (this.status === 200) {
+        console.log(this.responseText);
+    } else {
+        console.log("unsuccessful request");
+    }
+}
+
+function ajaxError(event) {
+    console.log('error');
+}
+
+</script>
+</html>

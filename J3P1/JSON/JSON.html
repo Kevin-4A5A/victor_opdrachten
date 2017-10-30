@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script>
+
+var jsonString = '{"employees": [ { "id" : 1, "firstname" : "Nico", "lastname" : "Boer" }, { "id" : 2, "firstname" : "Tim", "lastname" : "Jansen" }, { "id" : 3, "firstname" : "Pim", "lastname" : "Vosse" } ]}';
+
+var result = JSON.parse(jsonString);
+
+// 1
+console.log('1. Array');
+// 2
+console.log('2. ' + result.employees[2].firstname + ', ' + result.employees[2]['firstname'] );
+// 3
+console.log('3. ' + result.employees[0].lastname);
+// 4
+console.log('4. ' + result.employees[2].id);
+// 5
+result.employees[2].firstname = 'Will';
+console.log('5. ' + result.employees[2].firstname);
+// 6
+for(var i = 0; i < 3; i++)
+{
+	result.employees[i].permanentContract = true;
+}
+console.log('6. ' + result.employees[1].permanentContract);
+// 7
+delete result.employees[1].firstname;
+console.log('7. ' + result.employees[1].firstname);
+
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -11,7 +11,7 @@ function getTree($Tree)
 	{
 		if($array['parent'] == null)
 		{
-			$Output .= '<ul> <li>' . $array['value'];
+			$Output .= '<ul><li>' . $array['value'];
 			$Output .= KutKinderen($array, $Tree);	
 			$Output .= '</li></ul>';
 		}
@@ -19,6 +19,7 @@ function getTree($Tree)
 	$Output .= '</ul></ul>';
 	return $Output;
 }
+
 function KutKinderen($parent, $Tree)
 {
 	$Output = '';
@@ -26,7 +27,7 @@ function KutKinderen($parent, $Tree)
 	{
 		if($array['parent'] == $parent['value'])
 		{
-			$Output .= '<ul> <li>' . $array['value'] . '</li><ul>';
+			$Output .= '<ul><li>' . $array['value'] . '</li><ul>';
 			$Output .= KutKinderen($array, $Tree);
 			$Output .= '</ul></ul>';
 		}

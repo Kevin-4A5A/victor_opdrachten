@@ -12,7 +12,7 @@ function getParent($Tree, $number)
 	{
 		if($array['value'] == $number)
 		{
-			$parent = $array['parent'];
+			$parent = $array;
 		}
 	}
 	return $parent;
@@ -44,7 +44,7 @@ function getChild($Tree, $number)
 <div>
 Number is: <?php echo $Number; ?>
 <br>
-Parent is: <?php echo getParent($TOS, $Number); ?>
+Parent is: <?php echo getParent($TOS, $Number)['parent']; ?>
 <br>
 Children are: <?php echo implode(', ', getChild($TOS, $Number)); ?>
 </div>

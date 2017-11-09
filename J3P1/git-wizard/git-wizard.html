@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <title>Git Wizard Tool</title>
+    <link rel="stylesheet" type="text/css" href="git-wizard.css">
+</head>
+<body>
+   <div class="container">
+        <h1>Git Wizard Tool</h1>
+
+        <div class="steps" id="Content">
+             
+		</div>
+		
+		<div class="buttons">
+            <button id="previousStep" data-load-previous>&lt;&lt; Vorige stap</button>
+            <button id="nextStep" data-load-next>Volgende stap &gt;&gt;</button>
+        </div>
+</body>
+<script>
+document.getElementById('nextStep').addEventListener("click", PageUp);
+document.getElementById('nextStep').addEventListener("click", getContent);
+document.getElementById('previousStep').addEventListener("click", PageDown);
+document.getElementById('previousStep').addEventListener("click", getContent);
+window.addEventListener("load", getContent);
+window.addEventListener("load", CheckPage);
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("load", ajaxLoad);
+xhr.addEventListener("error", ajaxError);
+xhr.dataType = 'script';
+
+var currentpage = 0;
+
+function PageUp()
+{
+	currentpage++;
+	CheckPage();
+}
+
+function PageDown()
+{
+	currentpage--;
+	CheckPage();
+}
+
+function CheckPage()
+{
+	if(currentpage == 4)
+	{
+		document.getElementById('nextStep').disabled = true;
+	}
+	else
+	{
+		document.getElementById('nextStep').disabled = false;
+	}
+	if(currentpage == 0)
+	{
+		document.getElementById('previousStep').disabled = true;
+	}
+	else
+	{
+		document.getElementById('previousStep').disabled = false;
+	}
+}
+
+function getContent()
+{
+	xhr.open("GET", 'pages/Step' + currentpage + '.html' );
+	xhr.send();
+}
+
+var ContentScript = false;
+function getScript()
+{
+	xhr.open("GET", 'pages/Step' + currentpage + '.js' );
+	ContentScript = true;
+	xhr.send();
+}
+
+
+function ajaxLoad(event) 
+{
+    if (this.status === 200) 
+	{
+		if(ContentScript == true)
+		{
+			ContentScript = false;
+			var tag = document.createElement("script");
+			tag.innerHTML = this.responseText;
+			document.getElementById('Content').appendChild(tag); 
+		}
+		else
+		{
+			document.getElementById('Content').innerHTML = this.responseText;
+			getScript();
+		}
+    } 
+	else 
+	{
+        console.log("unsuccessful request");
+    }
+}
+
+function ajaxError(event) 
+{
+    console.log('error');
+}
+
+document.queryCommandEnabled('copy');
+function CopyToClipboard(element) 
+{
+	var copyText = document.getElementById(element);
+	copyText.select();
+	document.execCommand("Copy");
+	alert("Copied the text: " + copyText.value);
+}
+
+</script>
+</html>

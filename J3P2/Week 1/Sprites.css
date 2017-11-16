@@ -1,0 +1,81 @@
+div
+{
+	border: 1px solid black;
+	width:20em;
+}
+
+.slime
+{
+	background-image: url("Slime_Sprite.png");
+	height: 250px;
+	width: 240px;
+	position: absolute;
+	display: inline;
+	right: 10em;
+}
+
+.mario_character
+{
+	background-image: url("Mario_Sprites.png");
+	height: 50px;
+	width: 35px;
+	display: inline-block;
+	position: relative;
+	right: -5em;
+	top:1.5em;
+}
+
+.MarioNormal
+{
+	background-position: 0px 0px;
+}
+
+.MarioFlower
+{
+	background-position: 0px 145px;
+}
+
+.LuigiNormal
+{
+	background-position: 0px 95px;
+}
+
+.LuigiFlower
+{
+	background-position: 0px 43px;
+}
+
+.jump1
+{
+	background-position: -25px 730px;
+}
+.jump2
+{
+	background-position: -275px 730px;
+	visibility: hidden;
+}
+.jump3
+{
+	background-position: -505px 730px;
+	visibility: hidden;
+}
+.jump4
+{
+	background-position: -745px 730px;
+	visibility: hidden;
+}
+.jump5
+{
+	background-position: -1000px 750px;
+	visibility: hidden;
+}
+.jump6
+{
+	background-position: -1250px 750px;
+	visibility: hidden;
+}
+.jump7
+{
+	background-position: -1500px 750px;
+	visibility: hidden;
+}

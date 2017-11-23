@@ -1,3 +1,9 @@
+<style>
+img{
+	width:50px;
+	height:50px;
+}
+</style>
 <?php
 
 abstract class Dice
@@ -74,9 +80,3 @@ for($i=0; $i<10000; $i++)
 }
 ?>
 
-<style>
-img{
-	width:50px;
-	height:50px;
-}
-</style>

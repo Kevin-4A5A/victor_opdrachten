@@ -43,11 +43,25 @@ class cup implements cupInterface
 	{
 		if($this->positionUp === true)
 		{
-			return "<a href='?show_cup=$this->id' class='cup $this->color liftup'>$this->ball</a>";
+			if($this->type == 'glass')
+			{
+				return "<a href='?show_cup=$this->id' class='cup liftup'>$this->ball</a>";
+			}
+			else 
+			{
+				return "<a href='?show_cup=$this->id' class='cup $this->color liftup'>$this->ball</a>";
+			}
 		}
 		else if($this->positionUp === false)
 		{
-			return "<a href='?show_cup=$this->id' class='cup $this->color putdown'>$this->ball</a>";
+			if($this->type == 'glass')
+			{
+				return "<a href='?show_cup=$this->id' class='cup putdown'>$this->ball</a>";
+			}
+			else 
+			{
+				return "<a href='?show_cup=$this->id' class='cup $this->color putdown'>$this->ball</a>";
+			}
 		}
 	}
 	

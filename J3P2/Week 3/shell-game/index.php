@@ -20,9 +20,9 @@ require('Classes/class-game.php');
 $game = new game(20);
 
 $ball = new ball('red');
-$cups[1] = new cup('yellow', 'plastic', 1);
-$cups[2] = new cup('blue', 'plastic', 2);
-$cups[3] = new cup('red', 'plastic', 3);
+$cups[1] = new cup('yellow', 'glass', 1);
+$cups[2] = new cup('blue', 'glass', 2);
+$cups[3] = new cup('red', 'glass', 3);
 
 
 

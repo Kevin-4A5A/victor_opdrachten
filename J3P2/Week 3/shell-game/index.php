@@ -48,12 +48,12 @@ if(isset($_GET['show_cup']))
 		echo '<script type="text/javascript">alert("Fout gegokt!");</script>';
 	}
 }
-$player = new player('WillPoulter', $_COOKIE['Amount']);
+$player = new HumanPlayer('WillPoulter', $_COOKIE['Amount']);
 
 if(isset($_GET['startGame']))
 {
 	$rando = rand(1,3);
-	$cups[$rando]->ball = $ball->show();
+	$cups[$rando]->setBall($ball->show());
 	$_SESSION['ballposition'] = $rando;
 	echo '<script type="text/javascript">alert("Kies een beker!");</script>';
 }

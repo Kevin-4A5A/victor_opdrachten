@@ -8,6 +8,11 @@ class game
 	{
 		$this->amountPerGame = $amount;
 	}
+	
+	public function start()
+	{
+		
+	}
 }
 
 ?>

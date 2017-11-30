@@ -1,6 +1,6 @@
 <?php
 
-class player
+abstract class player
 {
 	public $name = null;
 	public $amount = null;
@@ -14,6 +14,26 @@ class player
 	public function show()
 	{
 		return "<div class='player'> <strong>$this->name: $this->amount</strong> </div>";
+	}
+	
+	abstract function __toString();
+
+}
+
+
+class HumanPlayer extends player
+{
+	public function __toString() 
+	{
+		return $this->show();
+	}
+}
+
+class ComputerPlayer extends player
+{
+	public function __toString() 
+	{
+		return '';
 	}
 }
 

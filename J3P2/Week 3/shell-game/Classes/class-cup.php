@@ -1,6 +1,15 @@
 <?php
+interface cupInterface
+{
+	public function liftUp();
+	public function putDown();
+	public function show();
+	public function __toString();	
+	public function setBall($ball);
+}
 
-class cup
+
+class cup implements cupInterface
 {
 	public $color = null;
 	public $type = null;
@@ -20,6 +29,11 @@ class cup
 		$this->positionUp = true;
 	}
 	
+	public function setBall($ball)
+	{
+		$this->ball = $ball;
+	}
+	
 	public function putDown()
 	{
 		$this->positionUp = false;
@@ -37,6 +51,10 @@ class cup
 		}
 	}
 	
+	public function __toString() 
+	{
+		return $this->show();
+	}
 	
 }
 

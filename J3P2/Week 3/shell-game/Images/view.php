@@ -28,13 +28,13 @@ no-repeat 0 60px; }
 
 
 <div class="cups">
- <?php echo $cups[1]->show(); ?>
- <?php echo $cups[2]->show(); ?>
- <?php echo $cups[3]->show(); ?>
+ <?php echo $cups[1]; ?>
+ <?php echo $cups[2]; ?>
+ <?php echo $cups[3]; ?>
  <div class="clear"></div>
  </div>
 
-<?php echo $player->show(); ?>
+<?php echo $player; ?>
 
 <button ><a href='?startGame=true'>Start Game!</a></button>
 <button ><a href='?resetAmount=true'>Reset Amount!</a></button>
